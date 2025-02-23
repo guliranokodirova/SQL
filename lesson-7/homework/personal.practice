@@ -1,0 +1,134 @@
+-- DDL for the Customers table
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    CustomerName VARCHAR(50)
+);
+
+-- DDL for the VIPCustomers table
+CREATE TABLE VIPCustomers (
+    CustomerID INT PRIMARY KEY,
+    CustomerName VARCHAR(50)
+);
+
+-- Sample data for Customers
+INSERT INTO Customers VALUES (1, 'John Doe');
+INSERT INTO Customers VALUES (2, 'Jane Smith');
+INSERT INTO Customers VALUES (3, 'Bob Johnson');
+INSERT INTO Customers VALUES (4, 'Alice Williams');
+INSERT INTO Customers VALUES (5, 'Charlie Brown');
+
+-- Sample data for VIPCustomers
+INSERT INTO VIPCustomers VALUES (2, 'Jane Smith');
+INSERT INTO VIPCustomers VALUES (4, 'Alice Williams');
+INSERT INTO VIPCustomers VALUES (6, 'Eve White');
+
+
+select CustomerID, CustomerName from VIPCustomers
+intersect
+select CustomerID, CustomerName from Customers
+
+
+select CustomerID, CustomerName from VIPCustomers
+except
+select CustomerID, CustomerName from Customers
+
+
+
+
+
+
+
+
+
+select CustomerID, CustomerName from(
+select CustomerID, CustomerName from VIPCustomers
+union 
+select CustomerID, CustomerName from Customers) as a
+
+
+
+
+---PUZZLE 3 ----
+-- Create table
+CREATE TABLE GroupbyMultipleColumns
+(
+    ID INT,
+    Typ VARCHAR(1),
+    Value1 VARCHAR(1),
+    Value2 VARCHAR(1),
+    Value3 VARCHAR(1)
+);
+
+-- Insert Data
+INSERT INTO GroupbyMultipleColumns(ID, Typ, Value1, Value2, Value3)
+VALUES
+    (1, 'I', 'a', 'b', ''),
+    (2, 'O', 'a', 'd', 'f'),
+    (3, 'I', 'd', 'b', ''),
+    (4, 'O', 'g', 'l', ''),
+    (5, 'I', 'z', 'g', 'a'),
+    (6, 'I', 'z', 'g', 'a');
+	select Typ,
+       SUM (case when Value1 ='a' then 1 else 0  end) + 
+	   SUM  (case when Value2 ='a' then 1 else 0 end) +
+	   SUM (case  when Value3 ='a' then 1 else 0  end)
+from GroupbyMultipleColumns
+group by typ
+
+
+select TYPE 
+
+	---sum, case, Group by 
+
+	--- puzzle 3 ---
+	CREATE TABLE FruitCount
+(
+    Name VARCHAR(20),
+    Fruit VARCHAR(25)
+);
+--Insert Data
+INSERT INTO FruitCount(Name, Fruit) 
+VALUES
+    ('Neeraj', 'MANGO'),
+    ('Neeraj', 'MANGO'),
+    ('Neeraj', 'MANGO'),
+    ('Neeraj', 'APPLE'),
+    ('Neeraj', 'ORANGE'),
+    ('Neeraj', 'LICHI'),
+    ('Neeraj', 'LICHI'),
+    ('Neeraj', 'LICHI'),
+    ('Isha', 'MANGO'),
+    ('Isha', 'MANGO'),
+    ('Isha', 'APPLE'),
+    ('Isha', 'ORANGE'),
+    ('Isha', 'LICHI'),
+    ('Gopal', 'MANGO'),
+    ('Gopal', 'MANGO'),
+    ('Gopal', 'APPLE'),
+    ('Gopal', 'APPLE'),
+    ('Gopal', 'APPLE'),
+    ('Gopal', 'ORANGE'),
+    ('Gopal', 'LICHI'),
+    ('Mayank', 'MANGO'),
+    ('Mayank', 'MANGO'),
+    ('Mayank', 'APPLE'),
+    ('Mayank', 'APPLE'),
+    ('Mayank', 'ORANGE'),
+    ('Mayank', 'LICHI');
+
+	select * from  FruitCount
+	
+
+
+				
+
+
+
+
+
+
+
+
+
+
+
